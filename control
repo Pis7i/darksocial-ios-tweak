@@ -1,0 +1,9 @@
+Package: p7
+Name: DarkSocial
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: Pis7iix
+Author: Pis7iix
+Section: Tweaks
