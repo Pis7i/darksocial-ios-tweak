@@ -21,7 +21,7 @@ static void
     - (id)delegate{
     %orig;
     
-    *_backgroundColor = [UIColor colorBlack];
+    *_backgroundColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
 
     }
     
