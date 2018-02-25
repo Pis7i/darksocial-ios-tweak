@@ -1,6 +1,6 @@
 @interface IGMainAppHeaderView{
-	UIColor *_backgroundColor
-	UIView *_contentContainerView
+	UIColor *_backgroundColor;
+	UIView *_contentContainerView;
 }
 
 
