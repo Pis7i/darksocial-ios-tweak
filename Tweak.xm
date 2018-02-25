@@ -2,9 +2,6 @@
 #import "igHeaders.h"
 #import "basicHeaders.h"
 
-static void 
-
-
 %hook SpringBoard
 
 	- (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -17,12 +14,9 @@ static void
 %end
 
 %hook IGMainAppHeaderView
+	
+	- (void)setBackgroundColor:(id)bgColor{
+		bgColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
+	}
 
-    - (id)delegate{
-    %orig;
-    
-    *_backgroundColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
-
-    }
-    
 %end
