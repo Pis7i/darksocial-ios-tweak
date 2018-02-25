@@ -3,5 +3,6 @@
 	UIView *_contentContainerView;
 }
 
+- (id)delegate;
 
 @end
