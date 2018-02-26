@@ -7,6 +7,7 @@
 - (void)_setBackgroundColor:(id)arg1;
 - (id)delegate;
 - (void)logoButtonTapped;
+- (void)layoutSubviews;
 
 @end
 

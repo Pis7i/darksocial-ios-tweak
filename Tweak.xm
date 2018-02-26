@@ -18,7 +18,10 @@ static UIColor *_hookedBGColor;
 %end
 
 %hook IGMainAppHeaderView
-	
+	- (void)layoutSubviews{
+self.backgroundColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
+}
+
 %end
 
 %hook IGPlainTableViewCell
