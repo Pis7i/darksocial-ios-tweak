@@ -6,7 +6,8 @@
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0x000000) >> 16))/255.0 green:((float)((rgbValue & 0x0000) >> 8))/255.0 blue:((float)(rgbValue & 0x00))/255.0 alpha:1.0];
 
 //static UIColor *_hookedBGColor;
-static UIView *_hookedUIView;
+static UIView *_hookedUIViewHeader;
+static UICollectionView *_hookedStoryTray;
 
 %hook SpringBoard
 
@@ -25,8 +26,10 @@ static UIView *_hookedUIView;
 	- (void)layoutSubviews{
 
 		self.backgroundColor = UIColorFromRGB(0x000000);
-		_hookedUIView = MSHookIvar<UIView *>(self, "_contentContainerView");
-		_hookedUIView.interactionTintColor = UIColorFromRGB(0xFFFFFF);
+
+		_hookedUIViewHeader = MSHookIvar<UIView *>(self, "_contentContainerView");
+		_hookedUIViewHeader.interactionTintColor = UIColorFromRGB(0xFFFFFF);
+
 		NSLog(@"Its Runned!");
 
 		%orig;
@@ -35,16 +38,11 @@ static UIView *_hookedUIView;
 
 %end
 
-/*%hook IGPlainTableViewCell
+%hook IGStoryTrayCollectionViewCell
 
-	- (void)layoutSubviews {
-
-		%orig();
-
-		_hookedBGColor = MSHookIvar<UIColor *>(self, "_defaultBackgroundColor");
-
-		_hookedBGColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
-
-	}
-
-%end/*
+- (void)layoutSubviews {
+   *_hookedStoryTray = MSHookIvar<UICollectionView *>(self, "*_collectionView");
+   *_hookedStoryTray.backgroundColor = UIColorFromRGB(0x000000);
+   
+   %orig;
+}
