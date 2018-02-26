@@ -46,3 +46,5 @@ static UICollectionView *_hookedStoryTray;
    
    %orig;
 }
+
+%end

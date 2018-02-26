@@ -11,7 +11,7 @@
 
 @end
 
-@interface IGStoryTrayCollectionViewCell : UICollectionView {
+@interface IGStoryTrayCollectionViewCell : UICollectionViewCell {
     UICollectionView *collectionView;
 }
 
