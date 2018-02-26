@@ -11,6 +11,12 @@
 
 @end
 
+@interface AppDelegate
+
+- (id)init;
+
+@end
+
 @interface IGColors
 
 + (id)navigationBarBackgroundColor;

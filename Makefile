@@ -1,3 +1,6 @@
+export TARGET = iphone:clang:latest:10.1
+export ARCHS = armv7 arm64 
+
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = DarkSocial
