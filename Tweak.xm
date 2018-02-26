@@ -23,6 +23,11 @@ static UIColor *_hookedBGColor;
 self.backgroundColor = UIColorFromRGB(0x000000);
 }
 
+	- (void)setBackgroundColor:(id)arg1{
+		arg1 = UIColorFromRGB(0x000000);
+		%orig(arg1);
+	}
+
 %end
 
 %hook IGPlainTableViewCell
