@@ -28,7 +28,7 @@ static UICollectionView *_hookedStoryTray;
 		self.backgroundColor = UIColorFromRGB(0x000000);
 
 		_hookedUIViewHeader = MSHookIvar<UIView *>(self, "_contentContainerView");
-		_hookedUIViewHeader.interactionTintColor = UIColorFromRGB(0xFFFFFF);
+		_hookedUIViewHeader.self.interactionTintColor = UIColorFromRGB(0xFFFFFF);
 
 		NSLog(@"Its Runned!");
 
@@ -42,7 +42,7 @@ static UICollectionView *_hookedStoryTray;
 
 - (void)layoutSubviews {
    *_hookedStoryTray = MSHookIvar<UICollectionView *>(self, "*_collectionView");
-   *_hookedStoryTray.backgroundColor = UIColorFromRGB(0x000000);
+   *_hookedStoryTray.self.backgroundColor = UIColorFromRGB(0x000000);
    
    %orig;
 }
