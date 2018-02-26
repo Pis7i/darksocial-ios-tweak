@@ -19,7 +19,7 @@ static UIColor *_hookedBGColor;
 
 %hook IGMainAppHeaderView
 	- (void)layoutSubviews{
-self.backgroundColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
+self.backgroundColor = UIColorFromRGB(0x000000);
 }
 
 %end
