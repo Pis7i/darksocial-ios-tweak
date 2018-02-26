@@ -37,3 +37,20 @@
 
 @end
 
+@interface IGPlainTableViewCell : UITableViewCell
+{
+    _Bool _canSelect;
+    UIColor *_defaultBackgroundColor;
+    UIColor *_highlightedBackgroundColor;
+}
+
+@property(readonly, nonatomic) _Bool canSelect; // @synthesize canSelect=_canSelect;
+@property(retain, nonatomic) UIColor *defaultBackgroundColor; // @synthesize defaultBackgroundColor=_defaultBackgroundColor;
+@property(retain, nonatomic) UIColor *highlightedBackgroundColor; // @synthesize highlightedBackgroundColor=_highlightedBackgroundColor;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)layoutSubviews;
+- (void)setHighlighted:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)setSelected:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)setSelectionStyle:(long long)arg1;
+
+@end

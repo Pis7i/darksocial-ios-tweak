@@ -4,6 +4,8 @@
 #import "UIKit/UIView.h"
 #import "UIKit/UIKit.h"
 
+static UIColor *_hookedBGColor;
+
 %hook SpringBoard
 
 	- (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -19,14 +21,11 @@
 	
 %end
 
-%hook IGDirectInboxCellButtonConfig
+%hook IGPlainTableViewCell
+	- (void)layoutSubviews {
+		%orig();
+		_hookedBGColor = MSHookIvar<UIColor *>(self, "_defaultBackgroundColor");
 
-- (id)initWithPrimaryText:(id)arg1 primaryTextColor:(id)arg2 primaryBackgroundColor:(id)arg3 destructiveText:(id)arg4 destructiveTextColor:(id)arg5 destructiveBackgroundColor:(id)arg6 {
-	arg2 = [UIColor colorWithRed:0.00 green:0.38 blue:1.00 alpha:1.0];
-
-		return %orig(arg1, arg2, arg3, arg4, arg5, arg6);
-		NSLog(@"twst");
-
-}
-
+		_hookedBGColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
+	}
 %end
