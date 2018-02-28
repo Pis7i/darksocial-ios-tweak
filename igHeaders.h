@@ -3,16 +3,36 @@
 	UIView *_contentContainerView;
 }
 
-- (void)setBackgroundColor:(id)arg1;
-- (void)_setBackgroundColor:(id)arg1;
-- (id)delegate;
-- (void)logoButtonTapped;
 - (void)layoutSubviews;
 
 @end
 
 @interface IGStoryTrayCollectionViewCell : UICollectionViewCell {
-    UICollectionView *collectionView;
+    UICollectionViewCell *_collectionView;
+}
+
+- (void)layoutSubviews;
+
+@end
+
+@interface IGStoryTrayCell : UICollectionViewCell
+{
+    UILabel *titleLabel;
+}
+
+- (void)layoutSubviews;
+
+@end
+
+@interface IGFeedItemHeader
+
+- (id)contentBackgroundColor;
+- (void)layoutSubviews;
+
+@end
+
+@interface IGFeedItemUFICell {
+	UIView *contentView;
 }
 
 - (void)layoutSubviews;

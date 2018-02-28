@@ -3,32 +3,22 @@
 #import "basicHeaders.h"
 #import "UIKit/UIView.h"
 #import <UIKit/UIKit.h>
-#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0x000000) >> 16))/255.0 green:((float)((rgbValue & 0x0000) >> 8))/255.0 blue:((float)(rgbValue & 0x00))/255.0 alpha:1.0];
 
-//static UIColor *_hookedBGColor;
+//Ivars
 static UIView *_hookedUIViewHeader;
 static UICollectionView *_hookedStoryTray;
+static UILabel *hookedUILabelStoryTray;
+static UIView *hookedUFICellView;
 
-%hook SpringBoard
-
-	- (void)applicationDidFinishLaunching:(UIApplication *)application {
-		%orig;
-
-		NSLog(@"It Works!");
-
-	}
-
-%end
-
-
+//Hooks
 %hook IGMainAppHeaderView
 
 	- (void)layoutSubviews{
 
-		self.backgroundColor = UIColorFromRGB(0x000000);
+		self.backgroundColor = UIColor.blackColor;
 
 		_hookedUIViewHeader = MSHookIvar<UIView *>(self, "_contentContainerView");
-		_hookedUIViewHeader.self.interactionTintColor = UIColorFromRGB(0xFFFFFF);
+		_hookedUIViewHeader.tintColor = UIColor.whiteColor;
 
 		NSLog(@"Its Runned!");
 
@@ -41,10 +31,44 @@ static UICollectionView *_hookedStoryTray;
 %hook IGStoryTrayCollectionViewCell
 
 - (void)layoutSubviews {
-   *_hookedStoryTray = MSHookIvar<UICollectionView *>(self, "*_collectionView");
-   *_hookedStoryTray.self.backgroundColor = UIColorFromRGB(0x000000);
-   
+
+   _hookedStoryTray = MSHookIvar<UICollectionView *>(self, "*_collectionView");
+   _hookedStoryTray.backgroundColor = UIColor.blackColor;
+
    %orig;
+}
+
+%end
+
+%hook IGStoryTrayCell
+
+- (void)layoutSubviews {
+
+	hookedUILabelStoryTray = MSHookIvar<UILabel *>(self, "titleLabel");
+
+	hookedUILabelStoryTray.textColor = UIColor.whiteColor;
+
+	%orig;
+}
+
+%end
+
+%hook IGFeedItemHeader
+
+- (void)layoutSubviews {
+	self.backgroundColor = UIColor.blackColor;
+	%orig;
+}
+
+%end
+
+%hook IGFeedItemUFICell
+
+- (void)layoutSubviews{
+	hookedUFICellView = MSHookIvar<UIView *>(self, "contentView");
+	hookedUFICellView.backgroundColor = UIColor.blackColor;
+
+	%orig;
 }
 
 %end
