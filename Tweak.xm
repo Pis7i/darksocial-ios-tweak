@@ -10,13 +10,14 @@
 
 //Hooks
 
-%hook IGNavigationBar
--(UIView *)contentOverlayView
-{
-	UIView *blankView = %orig;
-	blankView.backgroundColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
-	%log;
-	return blankView;
+%hook IGMainAppHeaderView
+
+-(UIColor *)_backgroundColor{
+
+UIColor *bgColor = %orig;
+bgColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
+return bgColor;
 }
+
 
 %end
