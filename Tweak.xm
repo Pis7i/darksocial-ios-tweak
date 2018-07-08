@@ -16,7 +16,13 @@
 
 UIColor *bgColor = %orig;
 bgColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
+NSLog(@"Test");
 return bgColor;
+}
+
+-(id)_backgroundColor{
+NSLog(@"Test2");
+return %orig;
 }
 
 
