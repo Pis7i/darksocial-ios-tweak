@@ -5,70 +5,18 @@
 #import <UIKit/UIKit.h>
 
 //Ivars
-static UIView *_hookedUIViewHeader;
-static UICollectionView *_hookedStoryTray;
-static UILabel *hookedUILabelStoryTray;
-static UIView *hookedUFICellView;
+
+
 
 //Hooks
-%hook IGMainAppHeaderView
 
-	- (void)layoutSubviews{
-
-		self.backgroundColor = UIColor.blackColor;
-
-		_hookedUIViewHeader = MSHookIvar<UIView *>(self, "_contentContainerView");
-		_hookedUIViewHeader.tintColor = UIColor.whiteColor;
-
-		NSLog(@"Its Runned!");
-
-		%orig;
-}
-
-
-%end
-
-%hook IGStoryTrayCollectionViewCell
-
-- (void)layoutSubviews {
-
-   _hookedStoryTray = MSHookIvar<UICollectionView *>(self, "*_collectionView");
-   _hookedStoryTray.backgroundColor = UIColor.blackColor;
-
-   %orig;
-}
-
-%end
-
-%hook IGStoryTrayCell
-
-- (void)layoutSubviews {
-
-	hookedUILabelStoryTray = MSHookIvar<UILabel *>(self, "titleLabel");
-
-	hookedUILabelStoryTray.textColor = UIColor.whiteColor;
-
-	%orig;
-}
-
-%end
-
-%hook IGFeedItemHeader
-
-- (void)layoutSubviews {
-	self.backgroundColor = UIColor.blackColor;
-	%orig;
-}
-
-%end
-
-%hook IGFeedItemUFICell
-
-- (void)layoutSubviews{
-	hookedUFICellView = MSHookIvar<UIView *>(self, "contentView");
-	hookedUFICellView.backgroundColor = UIColor.blackColor;
-
-	%orig;
+%hook IGNavigationBar
+-(UIView *)contentOverlayView
+{
+	UIView *blankView = %orig;
+	blankView.backgroundColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
+	%log;
+	return blankView;
 }
 
 %end

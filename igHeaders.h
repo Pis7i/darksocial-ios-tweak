@@ -7,34 +7,8 @@
 
 @end
 
-@interface IGStoryTrayCollectionViewCell : UICollectionViewCell {
-    UICollectionViewCell *_collectionView;
+@interface IGNavigationBar : UINavigationBar {
+	@property(retain, nonatomic) UIColor *overlayColor;
 }
-
-- (void)layoutSubviews;
-
-@end
-
-@interface IGStoryTrayCell : UICollectionViewCell
-{
-    UILabel *titleLabel;
-}
-
-- (void)layoutSubviews;
-
-@end
-
-@interface IGFeedItemHeader
-
-- (id)contentBackgroundColor;
-- (void)layoutSubviews;
-
-@end
-
-@interface IGFeedItemUFICell {
-	UIView *contentView;
-}
-
-- (void)layoutSubviews;
 
 @end
