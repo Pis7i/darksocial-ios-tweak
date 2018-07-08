@@ -6,9 +6,3 @@
 - (void)layoutSubviews;
 
 @end
-
-@interface IGNavigationBar : UINavigationBar {
-	@property(retain, nonatomic) UIColor *overlayColor;
-}
-
-@end
