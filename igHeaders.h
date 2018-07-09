@@ -10,3 +10,11 @@
 @property (nonatomic, copy, readwrite) UIColor *_currentImageColor;
 
 @end
+
+@interface IGFeedItemHeader
+{
+}
+
+- (void)setTextColor:(id)arg1;
+
+@end
