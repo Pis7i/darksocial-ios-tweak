@@ -1,8 +1,12 @@
-@interface IGMainAppHeaderView : UIView {
+@interface IGMainAppHeaderView : UIView
+{
 	UIColor *_backgroundColor;
 	UIView *_contentContainerView;
+	UIColor *_tintColor;
 }
-- (id)_backgroundColor;
-- (void)layoutSubviews;
+
+@property (nonatomic, copy, readwrite) UIColor *backgroundColor;
+@property (nonatomic, copy, readwrite) UIColor *tintColor;
+@property (nonatomic, copy, readwrite) UIColor *_currentImageColor;
 
 @end

@@ -12,20 +12,15 @@
 
 %hook IGMainAppHeaderView
 
--(UIColor *)_backgroundColor{
+	- (void)setBackgroundColor:(UIColor *)color{
+		%orig([UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0]);
+	}
 
-UIColor *bgColor = %orig;
-bgColor = [UIColor colorWithRed:0.00 green:0.00 blue:0.00 alpha:1.0];
-NSLog(@"Test");
-return bgColor;
-}
+	- (void)setTintColor:(UIColor *)color{
+		%orig([UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]);
+	}
 
--(id)_backgroundColor{
-NSLog(@"Test2");
-return %orig;
-}
-
-
-
-
+	- (void)setImageColor:(UIColor *)color{
+		%orig([UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]);
+	}
 %end
